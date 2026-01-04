@@ -19,10 +19,10 @@ interface ERPNextErrorResponse {
 /**
  * Extract detailed error message from ERPNext API response
  */
-export function extractERPNextError(error: AxiosError<ERPNextErrorResponse>): string {
-  if (error.response?.data) {
-    const data = error.response.data;
-    
+export function extractERPNextError(error: AxiosError): string {
+  const data = error.response?.data as ERPNextErrorResponse | undefined;
+  
+  if (data) {
     // Try _server_messages first (most detailed, JSON-encoded array)
     if (data._server_messages) {
       try {
@@ -104,7 +104,7 @@ export function extractERPNextError(error: AxiosError<ERPNextErrorResponse>): st
 /**
  * Format error response for tool output
  */
-export function formatErrorResponse(operation: string, error: AxiosError<ERPNextErrorResponse>): string {
+export function formatErrorResponse(operation: string, error: AxiosError): string {
   const details = extractERPNextError(error);
   const status = error.response?.status ? ` (HTTP ${error.response.status})` : '';
   return `${operation}${status}: ${details}`;
