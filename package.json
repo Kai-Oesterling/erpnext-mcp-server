@@ -1,0 +1,57 @@
+{
+  "name": "@kai-oesterling/erpnext-mcp-server",
+  "version": "2.0.0",
+  "description": "MCP Server for ERPNext - Full CRUD, Workflows, Custom Fields, DocType Management",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "erpnext-mcp-server": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node build/index.js",
+    "dev": "npx tsx src/index.ts",
+    "prepare": "npm run build",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "erpnext",
+    "frappe",
+    "model-context-protocol",
+    "ai-agents",
+    "erp",
+    "workflow",
+    "doctype"
+  ],
+  "author": "Kai Oesterling <kai@oesterling.org>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kai-Oesterling/erpnext-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kai-Oesterling/erpnext-mcp-server/issues"
+  },
+  "homepage": "https://github.com/Kai-Oesterling/erpnext-mcp-server#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "axios": "^1.7.0"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "tsx": "^4.19.0",
+    "zod": "^3.25.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
